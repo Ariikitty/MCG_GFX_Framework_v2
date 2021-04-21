@@ -1,5 +1,6 @@
 
 #include <cmath>
+#include <iostream>
 #include "MCG_GFX_Lib.h"
 #include "Functions.h"
 
@@ -26,7 +27,6 @@ int main( int argc, char *argv[] )
 
 	// Preparing a colour to draw
 	// Colours are RGB, each value ranges between 0 and 1
-	glm::vec3 pixelColour( 1, 0, 0 );
 
 	drawLine(76, 54, 275, 240);
 
@@ -70,7 +70,9 @@ int main( int argc, char *argv[] )
 void drawLine(float x1, float y1, float x2, float y2)
 {
 	glm::ivec2 pixelPosition = glm::ivec2(0, 0);
-	// Bresenham's line algorithm
+	glm::vec3 pixelColour(1, 0, 0);
+
+	// Bresenham's line algorithm from roesettacode.org
 	const bool steep = (fabs(y2 - y1) > fabs(x2 - x1));
 	if (steep)
 	{
@@ -98,10 +100,12 @@ void drawLine(float x1, float y1, float x2, float y2)
 		if (steep)
 		{
 			pixelPosition = glm::ivec2(y, x);
+			MCG::DrawPixel(pixelPosition, pixelColour);
 		}
 		else
 		{
 			pixelPosition = glm::ivec2(x, y);
+			MCG::DrawPixel(pixelPosition, pixelColour);
 		}
 
 		error -= dy;

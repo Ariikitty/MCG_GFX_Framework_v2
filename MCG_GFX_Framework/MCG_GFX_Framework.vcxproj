@@ -71,6 +71,8 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
+    <IncludePath>E:\steph\Documents\Coding\University\Year 1\Mathimatics for Computer Graphics\MCG_GFX_Framework_v2\SDKs\Include\GLM\detail;E:\steph\Documents\Coding\University\Year 1\Mathimatics for Computer Graphics\MCG_GFX_Framework_v2\SDKs\Include\GLM\gtc;E:\steph\Documents\Coding\University\Year 1\Mathimatics for Computer Graphics\MCG_GFX_Framework_v2\SDKs\Include\GLM\gtx;E:\steph\Documents\Coding\University\Year 1\Mathimatics for Computer Graphics\MCG_GFX_Framework_v2\SDKs\Include\GLM\simd;E:\steph\Documents\Coding\University\Year 1\Mathimatics for Computer Graphics\MCG_GFX_Framework_v2\SDKs\Include\SDL;E:\steph\Documents\Coding\University\Year 1\Mathimatics for Computer Graphics\MCG_GFX_Framework_v2\SDKs\Include\GLM;$(IncludePath)</IncludePath>
+    <LibraryPath>E:\steph\Documents\Coding\University\Year 1\Mathimatics for Computer Graphics\MCG_GFX_Framework_v2\SDKs\Lib86;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>

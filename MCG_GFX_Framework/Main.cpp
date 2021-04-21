@@ -1,9 +1,7 @@
 
 #include <cmath>
-
 #include "MCG_GFX_Lib.h"
-
-
+#include "Functions.h"
 
 int main( int argc, char *argv[] )
 {
@@ -30,15 +28,7 @@ int main( int argc, char *argv[] )
 	// Colours are RGB, each value ranges between 0 and 1
 	glm::vec3 pixelColour( 1, 0, 0 );
 
-
-	// Draws a single pixel at the specified coordinates in the specified colour!
-	MCG::DrawPixel( pixelPosition, pixelColour );
-
-	pixelPosition = glm::ivec2(50, 74);
-	MCG::DrawPixel(pixelPosition, pixelColour);
-	
-	// Do any other DrawPixel calls here
-	// ...
+	drawLine(76, 54, 275, 240);
 
 	// Displays drawing to screen and holds until user closes window
 	// You must call this after all your drawing calls
@@ -75,4 +65,50 @@ int main( int argc, char *argv[] )
 	return 0;
 	*/
 
+}
+
+void drawLine(float x1, float y1, float x2, float y2)
+{
+	glm::ivec2 pixelPosition = glm::ivec2(0, 0);
+	// Bresenham's line algorithm
+	const bool steep = (fabs(y2 - y1) > fabs(x2 - x1));
+	if (steep)
+	{
+		std::swap(x1, y1);
+		std::swap(x2, y2);
+	}
+
+	if (x1 > x2)
+	{
+		std::swap(x1, x2);
+		std::swap(y1, y2);
+	}
+
+	const float dx = x2 - x1;
+	const float dy = fabs(y2 - y1);
+
+	float error = dx / 2.0f;
+	const int ystep = (y1 < y2) ? 1 : -1;
+	int y = (int)y1;
+
+	const int maxX = (int)x2;
+
+	for (int x = (int)x1; x <= maxX; x++)
+	{
+		if (steep)
+		{
+			pixelPosition = glm::ivec2(y, x);
+		}
+		else
+		{
+			pixelPosition = glm::ivec2(x, y);
+		}
+
+		error -= dy;
+		if (error < 0)
+		{
+			y += ystep;
+			error += dx;
+		}
+	}
 }

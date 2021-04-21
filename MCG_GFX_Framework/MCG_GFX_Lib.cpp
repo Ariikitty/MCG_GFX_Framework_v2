@@ -5,7 +5,6 @@
 
 #include "MCG_GFX_Lib.h"
 
-
 namespace MCG
 {
 	SDL_Renderer *_renderer;
@@ -13,7 +12,6 @@ namespace MCG
 	glm::ivec2 _winSize;
 	unsigned int _lastTime;
 }
-
 
 bool MCG::Init( glm::ivec2 windowSize )
 {

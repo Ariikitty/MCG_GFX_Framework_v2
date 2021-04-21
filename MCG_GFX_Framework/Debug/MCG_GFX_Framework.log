@@ -1,2 +1,33 @@
-﻿  Main.cpp
-  MCG_GFX_Framework.vcxproj -> E:\steph\Documents\Coding\University\Year 1\Mathimatics for Computer Graphics\MCG_GFX_Framework_v2\Debug\MCG_GFX_Framework.exe
+﻿  MCG_GFX_Lib.cpp
+E:\steph\Documents\Coding\University\Year 1\Mathimatics for Computer Graphics\MCG_GFX_Framework_v2\MCG_GFX_Framework\MCG_GFX_Lib.cpp(82,63): warning C4244: 'argument': conversion from 'T' to 'Uint8', possible loss of data
+          with
+          [
+              T=float
+          ]
+E:\steph\Documents\Coding\University\Year 1\Mathimatics for Computer Graphics\MCG_GFX_Framework_v2\MCG_GFX_Framework\MCG_GFX_Lib.cpp(82,53): warning C4244: 'argument': conversion from 'T' to 'Uint8', possible loss of data
+          with
+          [
+              T=float
+          ]
+E:\steph\Documents\Coding\University\Year 1\Mathimatics for Computer Graphics\MCG_GFX_Framework_v2\MCG_GFX_Framework\MCG_GFX_Lib.cpp(82,43): warning C4244: 'argument': conversion from 'T' to 'Uint8', possible loss of data
+          with
+          [
+              T=float
+          ]
+E:\steph\Documents\Coding\University\Year 1\Mathimatics for Computer Graphics\MCG_GFX_Framework_v2\MCG_GFX_Framework\MCG_GFX_Lib.cpp(92,63): warning C4244: 'argument': conversion from 'T' to 'Uint8', possible loss of data
+          with
+          [
+              T=float
+          ]
+E:\steph\Documents\Coding\University\Year 1\Mathimatics for Computer Graphics\MCG_GFX_Framework_v2\MCG_GFX_Framework\MCG_GFX_Lib.cpp(92,53): warning C4244: 'argument': conversion from 'T' to 'Uint8', possible loss of data
+          with
+          [
+              T=float
+          ]
+E:\steph\Documents\Coding\University\Year 1\Mathimatics for Computer Graphics\MCG_GFX_Framework_v2\MCG_GFX_Framework\MCG_GFX_Lib.cpp(92,43): warning C4244: 'argument': conversion from 'T' to 'Uint8', possible loss of data
+          with
+          [
+              T=float
+          ]
+Main.obj : error LNK2019: unresolved external symbol "void __cdecl std::swap<float,0>(float &,float &)" (??$swap@M$0A@@std@@YAXAAM0@Z) referenced in function "void __cdecl drawLine(float,float,float,float)" (?drawLine@@YAXMMMM@Z)
+E:\steph\Documents\Coding\University\Year 1\Mathimatics for Computer Graphics\MCG_GFX_Framework_v2\Debug\MCG_GFX_Framework.exe : fatal error LNK1120: 1 unresolved externals

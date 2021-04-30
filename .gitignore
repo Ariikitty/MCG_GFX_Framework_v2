@@ -393,3 +393,12 @@ MigrationBackup/
 
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
+*.ipch
+*.pdb
+*.pdb
+*.ilk
+.vs/MCG_GFX_Framework/v16/ipch/AutoPCH/80b4c12e6ad8e1bb/MAIN.ipch
+.vs/MCG_GFX_Framework/v16/Browse.VC.db
+.vs/MCG_GFX_Framework/v16/.suo
+Debug/MCG_GFX_Framework.pdb
+Debug/MCG_GFX_Framework.ilk

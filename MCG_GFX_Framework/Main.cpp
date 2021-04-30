@@ -28,7 +28,10 @@ int main( int argc, char *argv[] )
 	// Preparing a colour to draw
 	// Colours are RGB, each value ranges between 0 and 1
 
-	drawLine(76, 54, 275, 240);
+	drawTriangle(320, 240, 1);
+	drawTriangle(320, 240, 2);
+	drawTriangle(320, 240, 3);
+	drawTriangle(320, 240, 4);
 
 	// Displays drawing to screen and holds until user closes window
 	// You must call this after all your drawing calls
@@ -114,5 +117,48 @@ void drawLine(float x1, float y1, float x2, float y2)
 			y += ystep;
 			error += dx;
 		}
+	}
+}
+
+void drawTriangle(float x1, float y1, int type)
+{
+	float x2, y2, x3, y3;
+
+	switch (type)
+	{
+	case 1:
+		x2 = x1 + 50;
+		y2 = y1 - 50;
+		drawLine(x1, y1, x2, y1);
+		drawLine(x1, y1, x1, y2);
+		drawLine(x2, y1, x1, y2);
+		break;
+	case 2:
+		x2 = x1 + 50;
+		x3 = x1 + 25;
+		y2 = y1 - 25;
+		drawLine(x1, y1, x2, y1);
+		drawLine(x2, y1, x3, y2);
+		drawLine(x3, y2, x1, y1);
+		break;
+	case 3:
+		x2 = x1 + 50;
+		x3 = x1 + 25;
+		y2 = y1 - 50;
+		drawLine(x1, y1, x2, y1);
+		drawLine(x2, y1, x3, y2);
+		drawLine(x3, y2, x1, y1);
+		break;
+	case 4:
+		x2 = x1 + 15;
+		y2 = y1 + 35;
+		x3 = x1 + 55;
+		y3 = y1 - 40;
+		drawLine(x1, y1, x2, y2);
+		drawLine(x2, y2, x3, y3);
+		drawLine(x3, y3, x1, y1);
+		break;
+	default:
+		std::cout << "Error: Unknown triangle requested" << std::endl;
 	}
 }

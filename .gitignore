@@ -402,3 +402,4 @@ FodyWeavers.xsd
 .vs/MCG_GFX_Framework/v16/.suo
 Debug/MCG_GFX_Framework.pdb
 Debug/MCG_GFX_Framework.ilk
+*.pdb

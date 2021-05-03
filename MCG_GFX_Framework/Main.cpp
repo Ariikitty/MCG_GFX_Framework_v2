@@ -28,10 +28,11 @@ int main( int argc, char *argv[] )
 	// Preparing a colour to draw
 	// Colours are RGB, each value ranges between 0 and 1
 
-	drawTriangle(320, 240, 1);
-	drawTriangle(320, 240, 2);
-	drawTriangle(320, 240, 3);
-	drawTriangle(320, 240, 4);
+	//drawTriangle(320, 240, 1);
+	//drawTriangle(320, 240, 2);
+	//drawTriangle(320, 240, 3);
+	//drawTriangle(320, 240, 4);
+	midPointCircleDraw(320, 240, 150);
 
 	// Displays drawing to screen and holds until user closes window
 	// You must call this after all your drawing calls
@@ -160,5 +161,73 @@ void drawTriangle(float x1, float y1, int type)
 		break;
 	default:
 		std::cout << "Error: Unknown triangle requested" << std::endl;
+	}
+}
+
+// Implementing Mid-Point Circle Drawing Algorithmm from geeksforgeeks.org
+void midPointCircleDraw(int x_centre, int y_centre, int r)
+{
+	glm::ivec2 pixelPosition = glm::ivec2(0, 0);
+	glm::vec3 pixelColour(1, 0, 0);
+
+	int x = r, y = 0;
+
+	// When radius is zero only a single
+	// point will be printed
+	if (r > 0)
+	{
+		pixelPosition = glm::ivec2(x + x_centre, -y + y_centre);
+		MCG::DrawPixel(pixelPosition, pixelColour);
+		pixelPosition = glm::ivec2(y + x_centre, x + y_centre);
+		MCG::DrawPixel(pixelPosition, pixelColour);
+		pixelPosition = glm::ivec2(-y + x_centre, x + y_centre);
+		MCG::DrawPixel(pixelPosition, pixelColour);
+	}
+
+	// Initialising the value of P
+	int P = 1 - r;
+	while (x > y)
+	{
+		y++;
+
+		// Mid-point is inside or on the perimeter
+		if (P <= 0)
+			P = P + 2 * y + 1;
+
+		// Mid-point is outside the perimeter
+		else
+		{
+			x--;
+			P = P + 2 * y - 2 * x + 1;
+		}
+
+		// All the perimeter points have already been printed
+		if (x < y)
+			break;
+
+		// Printing the generated point and its reflection
+		// in the other octants after translation
+		pixelPosition = glm::ivec2(x + x_centre, y + y_centre);
+		MCG::DrawPixel(pixelPosition, pixelColour);
+		pixelPosition = glm::ivec2(-x + x_centre, y + y_centre);
+		MCG::DrawPixel(pixelPosition, pixelColour);
+		pixelPosition = glm::ivec2(x + x_centre, -y + y_centre);
+		MCG::DrawPixel(pixelPosition, pixelColour);
+		pixelPosition = glm::ivec2(-x + x_centre, -y + y_centre);
+		MCG::DrawPixel(pixelPosition, pixelColour);
+
+		// If the generated point is on the line x = y then 
+		// the perimeter points have already been printed
+		if (x != y)
+		{
+			pixelPosition = glm::ivec2(y + x_centre, x + y_centre);
+			MCG::DrawPixel(pixelPosition, pixelColour);
+			pixelPosition = glm::ivec2(-y + x_centre, x + y_centre);
+			MCG::DrawPixel(pixelPosition, pixelColour);
+			pixelPosition = glm::ivec2(y + x_centre, -x + y_centre);
+			MCG::DrawPixel(pixelPosition, pixelColour);
+			pixelPosition = glm::ivec2(-y + x_centre, -x + y_centre);
+			MCG::DrawPixel(pixelPosition, pixelColour);
+		}
 	}
 }

@@ -28,11 +28,15 @@ int main( int argc, char *argv[] )
 	// Preparing a colour to draw
 	// Colours are RGB, each value ranges between 0 and 1
 
-	//drawTriangle(320, 240, 1);
-	//drawTriangle(320, 240, 2);
-	//drawTriangle(320, 240, 3);
-	//drawTriangle(320, 240, 4);
-	midPointCircleDraw(320, 240, 150);
+	//Drawing of the shapes
+	drawTriangle(301, 454, 1, 0, 0); //first triangle
+	drawTriangle(301, 454, 1, -137, -80); //translation of first triangle
+	drawTriangle(525, 118, 2, 0, 0); //second triangle
+	drawTriangle(525, 118, 2, -286, -79); //translation of second triangle
+	drawTriangle(312, 130, 3, 0, 0); //third triangle
+	drawTriangle(312, 130, 3, 250, 327); //translation of third triangle
+	drawTriangle(350, 350, 4, 0, 0); //forth triangle
+	drawCircle(320, 240, 150); //circle
 
 	// Displays drawing to screen and holds until user closes window
 	// You must call this after all your drawing calls
@@ -73,6 +77,7 @@ int main( int argc, char *argv[] )
 
 void drawLine(float x1, float y1, float x2, float y2)
 {
+	//initilising the vectors needed
 	glm::ivec2 pixelPosition = glm::ivec2(0, 0);
 	glm::vec3 pixelColour(1, 0, 0);
 
@@ -121,51 +126,73 @@ void drawLine(float x1, float y1, float x2, float y2)
 	}
 }
 
-void drawTriangle(float x1, float y1, int type)
+void drawTriangle(float x1, float y1, int type, float transX, float transY)
 {
+	//Declearing the points needed to form the triangle
 	float x2, y2, x3, y3;
 
+	//This will decied what triangle was needed to be drawn
 	switch (type)
 	{
 	case 1:
+		//Right Angle Triangle
 		x2 = x1 + 50;
-		y2 = y1 - 50;
-		drawLine(x1, y1, x2, y1);
-		drawLine(x1, y1, x1, y2);
-		drawLine(x2, y1, x1, y2);
+		y2 = y1;
+		x3 = x1;
+		y3 = y1 - 50;
 		break;
 	case 2:
+		//Equalatral Triangle
 		x2 = x1 + 50;
+		y2 = y1;
 		x3 = x1 + 25;
-		y2 = y1 - 25;
-		drawLine(x1, y1, x2, y1);
-		drawLine(x2, y1, x3, y2);
-		drawLine(x3, y2, x1, y1);
+		y3 = y1 - 25;
 		break;
 	case 3:
+		//Isosceles Triangle
 		x2 = x1 + 50;
+		y2 = y1;
 		x3 = x1 + 25;
-		y2 = y1 - 50;
-		drawLine(x1, y1, x2, y1);
-		drawLine(x2, y1, x3, y2);
-		drawLine(x3, y2, x1, y1);
+		y3 = y1 - 50;
 		break;
 	case 4:
+		//Scalene Triangle
 		x2 = x1 + 15;
 		y2 = y1 + 35;
 		x3 = x1 + 55;
 		y3 = y1 - 40;
-		drawLine(x1, y1, x2, y2);
-		drawLine(x2, y2, x3, y3);
-		drawLine(x3, y3, x1, y1);
 		break;
 	default:
+		//This is here to catch an errors a user may make if they were to use this function theirselves
 		std::cout << "Error: Unknown triangle requested" << std::endl;
 	}
+
+	//Implementation of a matrix transformation using a translation matrix
+	if (transX != 0 || transY != 0)
+	{
+		glm::mat4 Matrix = glm::translate(glm::mat4(), glm::vec3(transX, transY, 0.0f));
+		glm::vec4 Vector(x1, y1, 0.0f, 1.0f);
+		glm::vec4 transformedVector = Matrix * Vector;
+		x1 = transformedVector.x;
+		y1 = transformedVector.y;
+		Vector = glm::vec4(x2, y2, 0.0f, 1.0f);
+		transformedVector = Matrix * Vector;
+		x2 = transformedVector.x;
+		y2 = transformedVector.y;
+		Vector = glm::vec4(x3, y3, 0.0f, 1.0f);
+		transformedVector = Matrix * Vector;
+		x3 = transformedVector.x;
+		y3 = transformedVector.y;
+	};
+
+	//This calls the drawLine function to connect the 3 points together
+	drawLine(x1, y1, x2, y2);
+	drawLine(x2, y2, x3, y3);
+	drawLine(x3, y3, x1, y1);
 }
 
 // Implementing Mid-Point Circle Drawing Algorithmm from geeksforgeeks.org
-void midPointCircleDraw(int x_centre, int y_centre, int r)
+void drawCircle(int x_centre, int y_centre, int r)
 {
 	glm::ivec2 pixelPosition = glm::ivec2(0, 0);
 	glm::vec3 pixelColour(1, 0, 0);

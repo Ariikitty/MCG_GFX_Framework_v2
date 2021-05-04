@@ -403,3 +403,5 @@ FodyWeavers.xsd
 Debug/MCG_GFX_Framework.pdb
 Debug/MCG_GFX_Framework.ilk
 *.pdb
+*.vcxproj
+*.filters

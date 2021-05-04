@@ -27,3 +27,9 @@ The current types of triangles and their codes are:\
 ### drawCircle
 drawCircle allows the user to draw a circle.\
 The function can be used by calling drawCircle(x, y, r) where x and y are the coordinates for the center point and r is the radius of the circle. 
+
+## Things to improve
+There are multiple things I would love to comeback and change with this program.\
+The first thing would be the way the triangles are returned in the drawTriangles function. I would like to change it so it returned a matrix with each of the points inside it as this way it can be passed into a range of different matrix transformations.\
+Secondly I would like to add more transformations and a way so they would work on any shape no matter what.\ 
+Finally I would like to get some animation and colour going so it looks more visually pleasing. 
